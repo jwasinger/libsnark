@@ -168,6 +168,8 @@ template<typename ppT>
 class r1cs_gg_ppzksnark_verification_key {
 public:
     libff::GT<ppT> alpha_g1_beta_g2;
+    libff::G1<ppT> alpha_g1;
+    libff::G2<ppT> beta_g2;
     libff::G2<ppT> gamma_g2;
     libff::G2<ppT> delta_g2;
 
@@ -179,6 +181,19 @@ public:
                                        const libff::G2<ppT> &delta_g2,
                                        const accumulation_vector<libff::G1<ppT> > &gamma_ABC_g1) :
         alpha_g1_beta_g2(alpha_g1_beta_g2),
+        gamma_g2(gamma_g2),
+        delta_g2(delta_g2),
+        gamma_ABC_g1(gamma_ABC_g1)
+    {};
+
+    r1cs_gg_ppzksnark_verification_key(const libff::G1<ppT> &alpha_g1,
+                                       const libff::G2<ppT> &beta_g2,
+                                       const libff::G2<ppT> &gamma_g2,
+                                       const libff::G2<ppT> &delta_g2,
+                                       const accumulation_vector<libff::G1<ppT> > &gamma_ABC_g1) :
+        //alpha_g1_beta_g2(alpha_g1_beta_g2),
+        alpha_g1(alpha_g1),
+        beta_g2(beta_g2),
         gamma_g2(gamma_g2),
         delta_g2(delta_g2),
         gamma_ABC_g1(gamma_ABC_g1)
